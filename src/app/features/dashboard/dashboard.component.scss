@@ -1,0 +1,139 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.welcome-section {
+  h1 {
+    font-size: 32px;
+    margin-bottom: var(--spacing-xs);
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  
+  .stat-card {
+    background-color: var(--bg-card);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    transition: background-color 0.3s;
+    
+    &:hover {
+      background-color: var(--bg-elevated);
+    }
+    
+    h3 {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .value {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+  }
+}
+
+.recent-uploads {
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    
+    .view-all {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.table-wrapper {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  
+  th, td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--bg-highlight);
+  }
+  
+  th {
+    color: var(--text-sub);
+    font-weight: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  tr:last-child td {
+    border-bottom: none;
+  }
+  
+  tbody tr:hover {
+    background-color: var(--bg-elevated);
+  }
+  
+  .song-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    
+    .artwork-placeholder {
+      width: 40px;
+      height: 40px;
+      background-color: var(--bg-highlight);
+      border-radius: var(--radius-sm);
+    }
+  }
+  
+  .badge {
+    padding: 4px 8px;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+    &.live {
+      background-color: rgba(29, 185, 84, 0.2);
+      color: var(--primary-color);
+    }
+    
+    &.processing {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: var(--text-main);
+    }
+    
+    &.rejected {
+      background-color: rgba(229, 9, 20, 0.2);
+      color: #e50914;
+    }
+  }
+  
+  .icon-btn {
+    background: none;
+    border: none;
+    color: var(--text-sub);
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0;
+    
+    &:hover {
+      color: var(--text-main);
+    }
+  }
+}

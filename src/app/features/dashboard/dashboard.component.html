@@ -1,0 +1,60 @@
+<div class="dashboard-container">
+  <div class="welcome-section">
+    <h1>Good evening</h1>
+    <p>Here's what's happening with your music.</p>
+  </div>
+
+  <section class="stats-grid">
+    <div class="stat-card">
+      <h3>Total Streams</h3>
+      <div class="value">12.5k</div>
+    </div>
+    <div class="stat-card">
+      <h3>Active Releases</h3>
+      <div class="value">8</div>
+    </div>
+    <div class="stat-card">
+      <h3>Revenue</h3>
+      <div class="value">$450.20</div>
+    </div>
+  </section>
+
+  <section class="recent-uploads">
+    <div class="section-header">
+      <h2>Recent Uploads</h2>
+      <a href="#" class="view-all">View All</a>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Status</th>
+            <th>Streams</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let upload of recentUploads">
+            <td>
+              <div class="song-info">
+                <div class="artwork-placeholder"></div>
+                <span>{{ upload.title }}</span>
+              </div>
+            </td>
+            <td>{{ upload.artist }}</td>
+            <td>
+              <span class="badge" [class]="upload.status.toLowerCase()">{{ upload.status }}</span>
+            </td>
+            <td>{{ upload.streams | number }}</td>
+            <td>
+              <button class="icon-btn">⋮</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,111 @@
+<div class="upload-container">
+  <!-- Upload State: Idle (Drop Zone) -->
+  <ng-container *ngIf="!selectedFile && uploadState().status === 'idle'">
+    <h1>Upload Music</h1>
+    <p class="subtitle">Get your music on Spotify, Apple Music, and more.</p>
+
+    <div
+      class="drop-zone"
+      [class.dragging]="isDragging"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+      (click)="fileInput.click()"
+    >
+      <input #fileInput type="file" hidden (change)="onFileSelected($event)" accept="audio/*" />
+      <div class="drop-content">
+        <span class="icon">☁️</span>
+        <h3>Drag and drop your audio files here</h3>
+        <p>WAV, FLAC, or MP3 (320kbps)</p>
+        <button class="browse-btn">Browse Files</button>
+      </div>
+    </div>
+
+    <div class="upload-guidelines">
+      <h3>Before you upload:</h3>
+      <ul>
+        <li>Make sure you own 100% of the rights to this music.</li>
+        <li>Do not use unauthorized samples.</li>
+        <li>High quality artwork is required (3000 x 3000px).</li>
+      </ul>
+    </div>
+  </ng-container>
+
+  <!-- Upload State: Metadata Form & Progress -->
+  <ng-container *ngIf="selectedFile">
+    <div class="metadata-section">
+      <div class="header-row">
+        <h2>Release Details</h2>
+        <button
+          *ngIf="uploadState().status !== 'uploading' && uploadState().status !== 'processing'"
+          class="text-btn"
+          (click)="resetUpload()"
+        >
+          Cancel
+        </button>
+      </div>
+
+      <div class="file-info-card">
+        <span class="icon">🎵</span>
+        <div class="info">
+          <span class="filename">{{ selectedFile.name }}</span>
+          <span class="size">{{ selectedFile.size / 1024 / 1024 | number: '1.2-2' }} MB</span>
+        </div>
+      </div>
+
+      <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()" class="metadata-form">
+        <div class="form-group">
+          <label>Track Title</label>
+          <input type="text" formControlName="title" placeholder="Enter track name" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Artist Name</label>
+            <input type="text" formControlName="artist" placeholder="Primary artist" />
+          </div>
+          <div class="form-group">
+            <label>Genre</label>
+            <input type="text" formControlName="genre" placeholder="e.g. Pop, Hip-Hop" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Release Date</label>
+          <input type="date" formControlName="releaseDate" />
+        </div>
+
+        <!-- Progress Bar -->
+        <div *ngIf="uploadState().status !== 'idle'" class="progress-section">
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" [style.width.%]="uploadState().progress"></div>
+          </div>
+          <div class="status-text">
+            <span *ngIf="uploadState().status === 'uploading'"
+              >Uploading... {{ uploadState().progress }}%</span
+            >
+            <span *ngIf="uploadState().status === 'processing'">Processing audio...</span>
+            <span *ngIf="uploadState().status === 'completed'" class="success"
+              >Upload Complete! 🚀</span
+            >
+          </div>
+        </div>
+
+        <div class="actions">
+          <button
+            type="submit"
+            class="submit-btn"
+            [disabled]="
+              uploadForm.invalid ||
+              uploadState().status === 'uploading' ||
+              uploadState().status === 'processing' ||
+              uploadState().status === 'completed'
+            "
+          >
+            {{ uploadState().status === 'completed' ? 'Done' : 'Distribute Release' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+</div>

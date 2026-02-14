@@ -1,0 +1,92 @@
+/* Global Styles */
+:root {
+  /* Brand Colors */
+  --primary-color: #1db954; /* Spotify Green */
+  --primary-hover: #1ed760;
+  --secondary-color: #ffffff;
+  
+  /* Backgrounds */
+  --bg-color: #121212;
+  --bg-card: #181818;
+  --bg-elevated: #282828;
+  --bg-highlight: #333333;
+
+  /* Text */
+  --text-main: #ffffff;
+  --text-sub: #b3b3b3;
+  --text-muted: #535353;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px; // Pill shape
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Circular Std', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Fallback if font not loaded */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+p {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--text-sub);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--text-main);
+  }
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsla(0,0%,100%,.3);
+  border-radius: 10px;
+  border: 3px solid var(--bg-color); /* Creates padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsla(0,0%,100%,.5);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
