@@ -1,28 +1,28 @@
 <div class="sidebar-wrapper">
   <div class="logo">
-    <span class="icon">🎵</span>
+    <fa-icon [icon]="faMusic" class="icon"></fa-icon>
     <span class="text">UpMusic</span>
   </div>
 
   <nav class="nav-links">
     <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">
-      <span class="icon">🏠</span>
-      Dashboard
+      <fa-icon [icon]="faHouse" class="icon"></fa-icon>
+      Início
     </a>
     <a routerLink="/upload" routerLinkActive="active" class="nav-item">
-      <span class="icon">☁️</span>
-      Upload
+      <fa-icon [icon]="faCloudArrowUp" class="icon"></fa-icon>
+      Enviar Música
     </a>
-    <a routerLink="/library" routerLinkActive="active" class="nav-item">
-      <span class="icon">📚</span>
-      Library
+    <a routerLink="/catalog" routerLinkActive="active" class="nav-item">
+      <fa-icon [icon]="faBook" class="icon"></fa-icon>
+      Meu Catálogo
     </a>
   </nav>
 
   <div class="playlists">
-    <h4 class="section-title">Playlists</h4>
-    <div class="playlist-item">Liked Songs</div>
-    <div class="playlist-item">My New Album</div>
+    <h4 class="section-title">Suas Playlists</h4>
+    <div class="playlist-item">Músicas Curtidas</div>
+    <div class="playlist-item">Novo Álbum</div>
     <div class="playlist-item">Top Hits 2024</div>
   </div>
 </div>

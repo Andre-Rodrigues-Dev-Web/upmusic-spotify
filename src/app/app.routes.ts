@@ -17,6 +17,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/upload/upload.component').then((m) => m.UploadComponent),
       },
+      {
+        path: 'catalog',
+        loadComponent: () =>
+          import('./features/catalog/catalog.component').then((m) => m.CatalogComponent),
+      },
     ],
   },
   { path: '**', redirectTo: 'dashboard' },

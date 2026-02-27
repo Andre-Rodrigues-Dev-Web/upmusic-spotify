@@ -65,13 +65,13 @@ export class UploadComponent {
         });
       }
     } else {
-      alert('Please select a valid audio file.');
+      alert('Por favor, selecione um arquivo de áudio válido.');
     }
   }
 
   onSubmit() {
     if (this.uploadForm.valid && this.selectedFile) {
-      this.uploadService.simulateUpload(this.selectedFile).subscribe();
+      this.uploadService.distribute(this.selectedFile, this.uploadForm.value).subscribe();
     }
   }
 
